@@ -15,6 +15,7 @@ import { EditemployeeComponent } from './pages/editemployee/editemployee.compone
 import { DetailsemployeeComponent } from './pages/detailsemployee/detailsemployee.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
+import { PageRoutingModule } from './pages/page-routing.module';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AuthGuard } from './guards/auth.guard';
   ],
   imports: [
     BrowserModule,
+    PageRoutingModule,
     AppRoutingModule
   ],
   providers: [
