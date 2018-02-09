@@ -17,7 +17,12 @@ import { EditemployeeComponent } from './pages/editemployee/editemployee.compone
 import { DetailsemployeeComponent } from './pages/detailsemployee/detailsemployee.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { HttpService } from './services/httpservice';
+import { ApiService } from './services/api.service';
+import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
+
 
 @NgModule({
   declarations: [
@@ -35,19 +40,17 @@ import { HttpService } from './services/httpservice';
     LoginComponent
   ],
   imports: [
-      BrowserModule,
-      PageRoutingModule,
-        AppRoutingModule
+    BrowserModule,
+    PageRoutingModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpModule,
   ],
   providers: [
-      AuthGuard,
-      {
-          provide: HttpService,
-          useFactory: (backend: XHRBackend, options: RequestOptions) => {
-              return new HttpService(backend, options);
-          },
-          deps: [XHRBackend, RequestOptions]
-      }
+    ApiService,
+    AuthService,
+    AuthGuard
+     
   ],
   bootstrap: [AppComponent]
 })
