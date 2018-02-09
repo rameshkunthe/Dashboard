@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {Http, XHRBackend, RequestOptions, Request, RequestOptionsArgs, Response, Headers} from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
+import { PageRoutingModule } from './pages/page-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { FooterComponent } from './footer/footer.component';
@@ -15,7 +17,7 @@ import { EditemployeeComponent } from './pages/editemployee/editemployee.compone
 import { DetailsemployeeComponent } from './pages/detailsemployee/detailsemployee.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
-import { PageRoutingModule } from './pages/page-routing.module';
+import { HttpService } from './services/httpservice';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,19 @@ import { PageRoutingModule } from './pages/page-routing.module';
     LoginComponent
   ],
   imports: [
-    BrowserModule,
-    PageRoutingModule,
-    AppRoutingModule
+      BrowserModule,
+      PageRoutingModule,
+        AppRoutingModule
   ],
   providers: [
-      AuthGuard
+      AuthGuard,
+      {
+          provide: HttpService,
+          useFactory: (backend: XHRBackend, options: RequestOptions) => {
+              return new HttpService(backend, options);
+          },
+          deps: [XHRBackend, RequestOptions]
+      }
   ],
   bootstrap: [AppComponent]
 })
