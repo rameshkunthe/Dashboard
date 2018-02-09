@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
+import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-usernav',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UsernavComponent implements OnInit {
 
-  constructor() { }
+  constructor(private api: ApiService,
+    private auth: AuthService,
+    private router: Router) { }
 
   ngOnInit() {
   }
 
+  onLogout() {
+        this.auth.logout();
+        this.router.navigate(['/login']);
+  }
 }

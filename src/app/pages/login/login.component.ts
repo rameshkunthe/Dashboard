@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  show: boolean = false;
   constructor(private api: ApiService,
     private auth: AuthService,
     private router: Router) { }
@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
   
     onSubmit(form: NgForm) {
       const values = form.value;
-  
+      
       const payload = {
         "Id": 0,
         Username: values.username,
@@ -33,8 +33,12 @@ export class LoginComponent implements OnInit {
   
       this.api.post('User/Login', payload)
         .subscribe(data => {
+          this.show = false;
           this.auth.setToken(data.token);
           this.router.navigate(['/dashboard']);
+        }, err => {
+          this.show = true;
+          form.reset();
         });
     }
 

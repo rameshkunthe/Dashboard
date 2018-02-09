@@ -25,16 +25,14 @@
         "styles.css"
       ],
       "scripts": [
-        
         "../node_modules/jquery/dist/jquery.js",
+        "../node_modules/popper.js/dist/umd/popper.js",
         "../node_modules/bootstrap/dist/js/bootstrap.js",
-        
         "../node_modules/jquery.easing/bower_components/jquery-easing-original/jquery.easing.js",
+        "../node_modules/chart.js/dist/Chart.js",
         "../node_modules/datatables/media/js/jquery.dataTables.js",
-        "../node_modules/popper.js/dist/umd/popper.min.js",
         "../node_modules/datatables-bootstrap/js/dataTables.bootstrap.js",
-        "../node_modules/chartjs/chart.js",
-        
+        "js/sb-admin.js",
         "js/sb-admin-datatables.js"
         
 
