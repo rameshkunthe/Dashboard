@@ -21,6 +21,8 @@ import { ApiService } from './services/api.service';
 import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+
 
 
 
@@ -45,6 +47,7 @@ import { HttpModule } from '@angular/http';
     AppRoutingModule,
     FormsModule,
     HttpModule,
+    NgxDatatableModule
   ],
   providers: [
     ApiService,

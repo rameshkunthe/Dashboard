@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-listemployee',
@@ -6,10 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./listemployee.component.css']
 })
 export class ListemployeeComponent implements OnInit {
+    columns = [
+        { prop: 'Id' },
+        { prop: 'FirstName' },
+        { prop: 'LasttName' },
+        { prop: 'Salary' },
+        { prop: 'City' }
 
-  constructor() { }
+    ];
 
-  ngOnInit() {
+    rows = [];
+    constructor(private api: ApiService) { }
+
+    ngOnInit() {
+    
+
+        this.api.get('Employee')
+            .subscribe(data => {
+                this.rows = data;
+
+            }, err => {
+                
+            });
   }
 
 }
