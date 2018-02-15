@@ -22,6 +22,7 @@ import { AuthService } from './services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { EmployeeService } from './services/employee/employee.service'
 
 
 
@@ -52,7 +53,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
   providers: [
     ApiService,
     AuthService,
-    AuthGuard
+      AuthGuard,
+      EmployeeService
      
   ],
   bootstrap: [AppComponent]

@@ -1,6 +1,3 @@
-<p>
-  listemployee works!
-</p>
 <div>
     <ngx-datatable class="material"
                    [rows]="rows"
@@ -10,5 +7,28 @@
                    [footerHeight]="50"
                    [rowHeight]="'auto'"
                    [limit]="10">
+                   <ngx-datatable-column name="Id" prop="Id"></ngx-datatable-column>
+                   <ngx-datatable-column name="First Name" prop="FirstName"></ngx-datatable-column>
+                   <ngx-datatable-column name="Last Name" prop="LastName"></ngx-datatable-column>
+                   <ngx-datatable-column name="Salary" prop="Salary"></ngx-datatable-column>
+                   <ngx-datatable-column name="City" prop="City"></ngx-datatable-column>
+                   
+                   <ngx-datatable-column name="Action" prop="Id" [sortable]="false" [width]="260">
+                    <ng-template let-rowIndex="rowIndex" let-id="value" ngx-datatable-cell-template>
+                      <button class="btn btn-sm btn-info" (click)="onDetails(id)">
+                        <i class="fa fa-file"></i> Details
+                      </button>
+                      <button class="btn btn-sm btn-primary" (click)="onEdit(id)">
+                        <i class="fa fa-edit"></i> Edit
+                      </button>
+                      <button class="btn btn-sm btn-danger" (click)="onEdit(id)">
+                        <i class="fa fa-trash"></i> Delete
+                      </button>
+                    </ng-template>
+                  </ngx-datatable-column>
+
+
+                 
+
     </ngx-datatable>
 </div>
