@@ -1,3 +1,15 @@
-<p>
-  detailsemployee works!
-</p>
+<div class="card">
+    <h3 class="card-header">Employee Details</h3>
+    <div class="card-block">
+        <div class="p-5">
+            <h4 class="card-title">{{employee.FirstName }} {{employee.LastName }}</h4>
+            <p class="card-text">City:  {{employee.City }}</p>
+            <p class="card-text">Salary:  {{employee.Salary }}</p>
+            <button class="btn btn-sm btn-primary" (click)="onGotoList()">
+                Go Employee List
+            </button>
+            
+        </div>
+    </div>
+</div>
+<p></p>

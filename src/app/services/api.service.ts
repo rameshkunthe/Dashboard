@@ -48,8 +48,12 @@ export class ApiService {
     const request = new Request(requestOptions);
 
     return this.http.request(request)
-      .map((res: Response) => res.json())
-      .catch((res: Response) => this.onRequestError(res));
+        .map(
+        (res: Response)=> res.json()
+    )
+        .catch(
+        (res: Response)=> this.onRequestError(res)
+    );
   }
 
   onRequestError(res: Response) {
