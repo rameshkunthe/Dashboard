@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { EmployeeService } from '../../services/employee/employee.service'
 import { Employee } from '../../services/employee/index';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-listemployee',
@@ -19,28 +20,30 @@ export class ListemployeeComponent implements OnInit {
     ];
 
     rows = [];
-    constructor(private api: ApiService, private empservice: EmployeeService) { }
+    constructor(private api: ApiService, private empservice: EmployeeService,
+      private router: Router) { }
 
     ngOnInit() {
         this.empservice.getEmployees().subscribe(data => {
                 this.rows = data;
+                this.empservice.listEmployee = data;
             }, err => {
             });
   }
 
   onDelete(Id: number) {
-
-    alert(Id);
+    this.router.navigate(['/dashboard']);
+    
   }
 
   onEdit(Id: number) {
-
-    alert(Id);
+    this.empservice.selectedEmployee = this.empservice.listEmployee.find(e=> e.Id == Id);
+    this.router.navigate(['dashboard/edit-employee']);
   }
 
   onDetails(Id: number) {
-
-    alert(Id);
+    this.empservice.selectedEmployee = this.empservice.listEmployee.find(e=> e.Id == Id);
+    this.router.navigate(['/dashboard/details-employee']);
   }
 
 

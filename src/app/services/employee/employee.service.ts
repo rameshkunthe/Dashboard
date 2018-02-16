@@ -8,7 +8,8 @@ import {Http, Response, RequestOptions, Headers} from '@angular/http';
 
 @Injectable()
 export class EmployeeService {
-
+    selectedEmployee: Employee;
+    listEmployee: Employee[];
     constructor(private api: ApiService) { }
 
     //5. Function to return the Observable response containing all Employees
